@@ -1,0 +1,34 @@
+plugins {
+    id 'java'
+    id 'maven-publish'
+}
+
+group 'org.codelightful'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    testCompile 'org.testng:testng:7.1.0'
+    testCompile 'org.mockito:mockito-core:3.2.4'
+}
+
+test {
+    useTestNG()
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = 'org.codelightful'
+            artifactId = 'harpo'
+            version = '1.0'
+            from components.java
+        }
+    }
+}
